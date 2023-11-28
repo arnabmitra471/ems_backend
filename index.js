@@ -64,12 +64,14 @@ app.get("/employeesDetails/:id",(req,res)=>{
 })
 app.put("/employees/:id",(req,res)=>{
     const emp_id = req.params.id;
-    const q =  "UPDATE employees SET name = ?,salary = ?, address = ? WHERE id = ?";
+    const q =  "UPDATE employees SET name = ?,salary = ?, address = ?,email = ?, password = ? WHERE id = ?";
 
     const values = [
         req.body.name,
         req.body.salary,
-        req.body.address
+        req.body.address,
+        req.body.email,
+        req.body.password
     ]
     db.query(q,[...values,emp_id],(err,data)=>{
         if(err)
